@@ -5,6 +5,7 @@
       {{ detailsAreVisible ? "Hide details" : "Show details" }}
     </button>
     <button @click="toggleFavorite">Toggle Favorite</button>
+    <button @click="deleteFriend">Delete</button>
     <ul v-if="detailsAreVisible">
       <li><strong>Phone:</strong> {{ phoneNumber }}</li>
       <li><strong>Email:</strong> {{ email }}</li>
@@ -37,7 +38,7 @@ export default {
       default: false,
     },
   },
-  emits: ["toggle-favorite"],
+  emits: ["toggle-favorite", "delete-friend"],
   //   emits: {
   //     "toggle-favorite": function(id) {
   //       if (id) {
@@ -59,6 +60,9 @@ export default {
     },
     toggleFavorite() {
       this.$emit("toggle-favorite", this.id)
+    },
+    deleteFriend() {
+      this.$emit("delete-friend", this.id)
     },
   },
 }
